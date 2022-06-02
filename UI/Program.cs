@@ -9,8 +9,11 @@ namespace Task_Manager.UI
         static void Main(string[] args)
         {
             // Приветствие и выбор действий
-            MenuManager.Hello();
-            MenuManager.MenuChoice();
+            MenuInformer menuInformer = new();
+            Manager manager = new();
+
+            menuInformer.Hello();
+            manager.MenuChoice();
         }
     }
 }

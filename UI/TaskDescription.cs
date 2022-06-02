@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Task_Manager.UI
 {
-    public class TaskDescription
+    public class TaskDescription: ITaskDescription
     {
-        public static void Description(string name, string description, string status, int time)
+        public void Description(string name, string description, string status, int time)
         {
             Console.WriteLine("-------");
             Console.WriteLine($"Название: {name}");
@@ -16,6 +16,12 @@ namespace Task_Manager.UI
             Console.WriteLine($"Затраченное время: {time} часов");
             Console.WriteLine($"Статус: {status}");
             Console.WriteLine("-------");
+        }
+        public void SetDescription(MenuInformer menuInformer, Task task)
+        {
+            menuInformer.TaskDescription();
+            string descriprion = Console.ReadLine();
+            task.Description = descriprion;
         }
     }
 }

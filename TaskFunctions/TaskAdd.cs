@@ -2,35 +2,34 @@
 
 using Task_Manager.Storage;
 using Task_Manager.UI;
+using Task_Manager.TaskStatus;
 
 namespace Task_Manager.TaskFunctions
 {
-    class TaskAdd
+    class TaskAdd: ITaskAdd
     {
         // Создаем задачу
-        public static void Add()
+        public void Add()
         {           
             using DbStorage db = new();
-            
-            // Пишем название задачи                       
+
+            // Пишем название задачи
             string nameTask = Console.ReadLine();
             Task task = new() { Name = nameTask };
-            EStatus eStatus = new();
+            SetStatus setStatus = new();
+            MenuInformer menuInformer = new();
+            TaskDateCreated taskDateCreated = new();
+            TaskChoiceStatus taskChoiceStatus = new();
+            TaskDescription taskDescription = new(); 
 
-            // Устанавливаем время для задачи
-            DateTime _dateCreated = DateTime.Now;
-            task.DateCreated = _dateCreated;
-            Console.WriteLine($"Дата создания задачи установлена: {_dateCreated:f}");
+            // Устанавливаем время для задачи           
+            taskDateCreated.DateCreated(task);
 
             // Задаем статус для задачи
-            eStatus.ChoiceAction();
-            string choiceStatus = Console.ReadLine();
-            eStatus.Status(task, choiceStatus);
+            taskChoiceStatus.ChoiceStatus(task, setStatus);
 
             // Даем описание задачи
-            MenuManager.TaskDescription();
-            string descriprion = Console.ReadLine();
-            task.Description = descriprion;
+            taskDescription.SetDescription(menuInformer, task);
 
             db.Task.Add(task);
             db.SaveChanges();

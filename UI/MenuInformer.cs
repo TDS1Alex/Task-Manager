@@ -1,55 +1,38 @@
 ﻿using System;
 
-using Task_Manager.TaskFunctions;
-
 namespace Task_Manager.UI
 {
-    public class MenuManager
+    public class MenuInformer: IMenuInformer
     {
-        public static void Hello()
+        readonly Manager manager = new();
+
+        public void Hello()
         {
             Console.WriteLine("Добро пожаловать в Менеджер задач!");
             ChoiceAction();
         }
-        public static void ChoiceAction()
+        public void ChoiceAction()
         {
             Console.WriteLine("-----------------------------");
             Console.WriteLine("Выберите следующее действие:");
             Console.WriteLine("1. Создать новую задачу");
             Console.WriteLine("2. Посмотреть созданные задачи");
             Console.WriteLine("-----------------------------");
-            MenuChoice();
+            manager.MenuChoice();
         }
-        public static void MenuChoice()
-        {
-            string choice = Console.ReadLine();
-            switch (choice)
-            {               
-                default:
 
-                    Console.WriteLine("Напишите название новой задачи:");
-                    TaskAdd.Add();
-                    ChoiceAction();
-                    break;
-
-                case "2":
-
-                    TaskReceiving.Receiving();
-                    break;
-            }
-        }
-        public static void TaskList()
+        public void TaskList()
         {
             Console.WriteLine("-------");
             Console.WriteLine("Задачи:");
         }
-        public static void TaskChoice()
+        public void TaskChoice()
         {
             Console.WriteLine("-------");
             Console.WriteLine("Выберите задачу, чтобы получить более подробную информацию");
             Console.WriteLine("-------");
         }
-        public static void TaskDescription()
+        public void TaskDescription()
         {
             Console.WriteLine("------------------------------------");
             Console.WriteLine("Дайте краткое описание Вашей задачи:");
