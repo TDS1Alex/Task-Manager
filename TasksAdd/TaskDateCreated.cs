@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Task_Manager.TaskFunctions
+using Task_Manager.Domain;
+
+namespace Task_Manager.TasksAdd
 {
     public class TaskDateCreated: ITaskDateCreated
     {

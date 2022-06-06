@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Task_Manager.Domain;
 
 namespace Task_Manager.UI
 {
@@ -15,11 +13,13 @@ namespace Task_Manager.UI
             Console.WriteLine($"Описание: {description}");
             Console.WriteLine($"Затраченное время: {time} часов");
             Console.WriteLine($"Статус: {status}");
-            Console.WriteLine("-------");
         }
-        public void SetDescription(MenuInformer menuInformer, Task task)
+
+        public void SetDescription(Task task)
         {
-            menuInformer.TaskDescription();
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("Дайте краткое описание Вашей задачи:");
+
             string descriprion = Console.ReadLine();
             task.Description = descriprion;
         }

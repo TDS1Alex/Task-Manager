@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Task_Manager.Domain;
 
 namespace Task_Manager.UI
 {
-    interface ITaskDescription
+    public interface ITaskDescription
     {
         void Description(string name, string description, string status, int time);
-        void SetDescription(MenuInformer menuInformer, Task task);
+        void SetDescription(Task task);
     }
 }
